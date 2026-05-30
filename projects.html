@@ -30,7 +30,10 @@
 .kpi-val { font-size:.8rem; font-weight:600; color:var(--text); }
 .stack-title { font-family:'Space Mono',monospace; font-size:.62rem; color:var(--accent2); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.8rem; display:flex; align-items:center; gap:.8rem; }
 .stack-title::after { content:''; flex:1; height:1px; background:rgba(123,47,255,.15); }
-.project-stack { display:flex; flex-wrap:wrap; gap:.5rem; }
+.project-stack { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom: 1.5rem; }
+.project-links { display: flex; gap: 1rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; }
+.project-link { color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.3s; }
+.project-link:hover { color: var(--text); }
 
 @media(max-width:1024px) { .project-inner{grid-template-columns:1fr;} .project-sidebar{display:none;} .project-kpis{grid-template-columns:repeat(2,1fr);} .project-body{padding:2rem;} }
 </style>
@@ -56,19 +59,21 @@
 </nav>
 
 <div class="page-header">
-  <div class="page-header-label">Réalisations Big Data</div>
+  <div class="page-header-label">Réalisations Big Data & IA</div>
   <h1 class="page-header-title"><span class="grad">Projets</span></h1>
   <div class="page-header-line"></div>
 </div>
 
 <main>
-  <p class="projects-intro reveal">Des projets Big Data concrets appliqués à des secteurs réels — santé publique, commerce multi-agences — construits avec Apache Spark, Python et MongoDB pour produire des indicateurs stratégiques mesurables.</p>
+  <p class="projects-intro reveal">Des projets concrets appliqués au Big Data et à l'Intelligence Artificielle — télécoms, santé publique, gestion commerciale multi-sources — construits avec Apache Spark, Polars, Python et des architectures MLOps modernes pour produire des indicateurs stratégiques et des API de scoring en temps réel.</p>
 
   <div class="projects-list">
 
     <div class="project-card reveal">
       <div class="project-inner">
         <div class="project-sidebar">
+
+          <!-- PROJET 01 -->
           <div class="project-num">01</div>
           <div>
             <div class="project-domain">Santé Publique</div>
@@ -93,28 +98,101 @@
       </div>
     </div>
 
+    <!-- PROJET 02 -->
     <div class="project-card reveal">
       <div class="project-inner">
         <div class="project-sidebar">
           <div class="project-num">02</div>
           <div>
-            <div class="project-domain">Commerce & Ventes</div>
-            <div class="project-sidebar-title">Analyse Big Data des ventes multi-sources</div>
+            <div class="project-domain">Télécoms / Data Engineering</div>
+            <div class="project-sidebar-title">Pipeline ETL Big Data - Suivi des Performances Commerciales</div>
           </div>
         </div>
         <div class="project-body">
-          <p class="project-desc">Une entreprise multi-agences dispose de données de ventes dans plusieurs formats et sources hétérogènes. Objectif : consolider les données via Spark, normaliser les pipelines ETL et produire des indicateurs stratégiques de performance commerciale.</p>
-          <div class="kpis-title">KPIs produits</div>
+          <p class="project-desc">Développement d'un pipeline ETL distribué et scalable pour centraliser, nettoyer et analyser les flux transactionnels massifs et asynchrones d'un réseau de 50 agences télécoms (inspiré du modèle opérationnel d'Orange Cameroun). Le système ingère des formats hétérogènes, applique un alignement sémantique algorithmique et enrichit les données à grande échelle via des jointures de masse optimisées.</p>
+          
+          <div class="kpis-title">KPIs produits & Métriques</div>
           <div class="project-kpis">
-            <div class="kpi-item"><div class="kpi-label">KPI</div><div class="kpi-val">Chiffre d'affaires global</div></div>
-            <div class="kpi-item"><div class="kpi-label">KPI</div><div class="kpi-val">Ventes par agence</div></div>
-            <div class="kpi-item"><div class="kpi-label">KPI</div><div class="kpi-val">Top 5 commerciaux</div></div>
-            <div class="kpi-item"><div class="kpi-label">KPI</div><div class="kpi-val">Agence la + performante</div></div>
+            <div class="kpi-item"><div class="kpi-label">KPI</div><div class="kpi-val">Chiffre d'Affaires Global</div></div>
+            <div class="kpi-item"><div class="kpi-label">KPI</div><div class="kpi-val">Top 5 Commerciaux (Windowing)</div></div>
+            <div class="kpi-item"><div class="kpi-label">KPI</div><div class="kpi-val">Performance Agence (Rentabilité)</div></div>
+            <div class="kpi-item"><div class="kpi-label">Volume</div><div class="kpi-val">50 Agences / Multi-formats</div></div>
+          </div>
+          
+          <div class="stack-title">Stack technique</div>
+          <div class="project-stack">
+            <span class="stack-tag">Apache Spark</span><span class="stack-tag">PySpark (Batch)</span><span class="stack-tag">Python 3.10+</span>
+            <span class="stack-tag">Catalyst Optimizer</span><span class="stack-tag">MongoDB</span><span class="stack-tag">Mongo-Spark-Connector</span>
+            <span class="stack-tag">Power BI</span><span class="stack-tag">JSON / Parquet / CSV</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://github.com/STL-dataCorp/big-data-commercial-pipeline.git" target="_blank" class="project-link">📂 Code Source GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJET 03 -->
+    <div class="project-card reveal">
+      <div class="project-inner">
+        <div class="project-sidebar">
+          <div class="project-num">03</div>
+          <div>
+            <div class="project-domain">Médecine Prédictive / MLOps</div>
+            <div class="project-sidebar-title">Modèle IA de Prédiction du Diabète</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Conception et déploiement d'un pipeline complet de Machine Learning pour le diagnostic précoce du diabète basé sur le dataset Pima Indians. Le projet englobe le nettoyage des données (gestion des zéros aberrants), l'entraînement d'un classifieur supervisé et l'exposition du modèle via une architecture découplée (API + UI web).</p>
+          <div class="kpis-title">Indicateurs & Performance</div>
+          <div class="project-kpis">
+            <div class="kpi-item"><div class="kpi-label">Précision</div><div class="kpi-val">~80% d'Accuracy</div></div>
+            <div class="kpi-item"><div class="kpi-label">Architecture</div><div class="kpi-val">API REST RESTful</div></div>
+            <div class="kpi-item"><div class="kpi-label">Dataset Size</div><div class="kpi-val">2269 entrées / 9 features</div></div>
+            <div class="kpi-item"><div class="kpi-label">Temps Réponse</div><div class="kpi-val">Faible latence (&lt;50ms)</div></div>
           </div>
           <div class="stack-title">Stack technique</div>
           <div class="project-stack">
-            <span class="stack-tag">Apache Spark</span><span class="stack-tag">PySpark</span><span class="stack-tag">Python</span>
-            <span class="stack-tag">SQL</span><span class="stack-tag">Multi-format</span><span class="stack-tag">ETL/Fusion</span><span class="stack-tag">Déduplication</span>
+            <span class="stack-tag">Python 3.11</span><span class="stack-tag">Scikit-Learn</span><span class="stack-tag">Random Forest</span>
+            <span class="stack-tag">FastAPI</span><span class="stack-tag">Streamlit</span><span class="stack-tag">Uvicorn</span><span class="stack-tag">Pandas/NumPy</span>
+            <span class="stack-tag">Render Cloud</span><span class="stack-tag">Git / GitHub</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/STL-dataCorp/Diabetes_Prediction_AI" target="_blank" class="project-link">📂 Code Source GitHub</a>
+            <a href="https://diabetes-prediction-ai-zaay.onrender.com/docs" target="_blank" class="project-link">🔌 Documentation Swagger (API)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJET 04 -->
+    <div class="project-card reveal">
+      <div class="project-inner">
+        <div class="project-sidebar">
+          <div class="project-num">04</div>
+          <div>
+            <div class="project-domain">Télécoms / MLOps & Big Data</div>
+            <div class="project-sidebar-title">Système de prédiction du Churn</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Développement d'un système prédictif de bout en bout visant à identifier les abonnés mobiles à risque de désabonnement. Ce projet intègre une phase d'ingénierie des caractéristiques haute performance avec Polars, l'optimisation d'un modèle Random Forest via RandomizedSearchCV (gestion des classes déséquilibrées), et l'encapsulation complète du pipeline de prétraitement et de scoring dans une API web industrielle.</p>
+          <div class="kpis-title">Indicateurs & Performance</div>
+          <div class="project-kpis">
+            <div class="kpi-item"><div class="kpi-label">AUC-ROC</div><div class="kpi-val">94.65%</div></div>
+            <div class="kpi-item"><div class="kpi-label">Rappel (Recall)</div><div class="kpi-val">94.11%</div></div>
+            <div class="kpi-item"><div class="kpi-label">Exactitude</div><div class="kpi-val">84.84% (Accuracy)</div></div>
+            <div class="kpi-item"><div class="kpi-label">Variables (Inputs)</div><div class="kpi-val">44 Features</div></div>
+          </div>
+          <div class="stack-title">Stack technique</div>
+          <div class="project-stack">
+            <span class="stack-tag">Polars (Fast ETL)</span><span class="stack-tag">Python</span><span class="stack-tag">Scikit-Learn</span>
+            <span class="stack-tag">Random Forest</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Uvicorn</span>
+            <span class="stack-tag">Hyperparameter Tuning</span><span class="stack-tag">ML Pipelines</span><span class="stack-tag">Swagger/OpenAPI</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/STL-dataCorp" target="_blank" class="project-link">📂 Code Source GitHub</a>
           </div>
         </div>
       </div>
@@ -128,7 +206,7 @@
     <a href="index.html">Accueil</a><a href="about.html">À propos</a><a href="skills.html">Compétences</a>
     <a href="projects.html">Projets</a><a href="parcours.html">Parcours</a><a href="contact.html">Contact</a>
   </div>
-  <div class="footer-copy">Built with precision & passion — 2025 —</div>
+  <div class="footer-copy">Built with precision & passion — 2026 —</div>
 </footer>
 <script src="shared.js"></script>
 </body>
