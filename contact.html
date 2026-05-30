@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — GEUTUI SAINT LOIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+.contact-text { font-size:.97rem; color:var(--muted); line-height:1.9; margin-bottom:2rem; }
+.contact-text strong { color:var(--text); }
+.avail-badge { display:inline-flex; align-items:center; gap:.6rem; font-family:'Space Mono',monospace; font-size:.68rem; color:var(--accent3); border:1px solid rgba(0,255,157,.22); padding:.5rem 1.1rem; border-radius:2px; background:rgba(0,255,157,.04); margin-bottom:2.5rem; }
+.avail-badge .dot { width:6px; height:6px; background:var(--accent3); border-radius:50%; animation:pulse-dot 2s infinite; box-shadow:0 0 8px var(--accent3); }
+@keyframes pulse-dot { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.6} }
+
+.opportunity-list { list-style:none; display:flex; flex-direction:column; gap:.7rem; margin-bottom:2.5rem; }
+.opportunity-list li { display:flex; align-items:center; gap:.8rem; font-size:.88rem; color:var(--muted); }
+.opportunity-list li::before { content:''; width:6px; height:6px; background:var(--accent); border-radius:50%; flex-shrink:0; }
+.opportunity-list li strong { color:var(--text); }
+
+.contact-links { display:flex; flex-direction:column; gap:.9rem; }
+.contact-link { display:flex; align-items:center; gap:1.2rem; padding:1.4rem 1.8rem; background:var(--card); border:1px solid var(--border); text-decoration:none; color:var(--text); clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px)); transition:all .35s; position:relative; overflow:hidden; }
+.contact-link::after { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(135deg,rgba(0,212,255,.04),transparent); opacity:0; transition:opacity .3s; }
+.contact-link:hover { border-color:rgba(0,212,255,.4); transform:translateX(8px); color:var(--accent); }
+.contact-link:hover::after { opacity:1; }
+.contact-link-icon { width:42px; height:42px; background:rgba(0,212,255,.07); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; border-radius:4px; transition:all .3s; }
+.contact-link:hover .contact-link-icon { background:rgba(0,212,255,.15); border-color:rgba(0,212,255,.4); }
+.contact-link-label { font-family:'Space Mono',monospace; font-size:.58rem; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; }
+.contact-link-val { font-size:.9rem; font-weight:600; margin-top:.1rem; }
+.contact-link-arrow { margin-left:auto; font-size:1rem; color:var(--muted); transition:all .3s; }
+.contact-link:hover .contact-link-arrow { color:var(--accent); transform:translateX(4px); }
+
+/* Big quote block */
+.contact-quote { margin-top:4rem; padding:2.5rem; background:var(--card); border:1px solid var(--border); border-left:3px solid var(--accent); clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%); }
+.contact-quote p { font-size:1.1rem; color:var(--text); line-height:1.8; font-style:italic; margin-bottom:1rem; }
+.contact-quote cite { font-family:'Space Mono',monospace; font-size:.7rem; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+
+@media(max-width:1024px) { .contact-layout{grid-template-columns:1fr;gap:3rem;} }
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="grid-overlay"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">GSL<span style="color:var(--muted)"> // </span>Portfolio</a>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="skills.html">Compétences</a>
+    <a href="projects.html">Projets</a>
+    <a href="parcours.html">Parcours</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+  <a href="mailto:geutuiloic@gmail.com" class="nav-cta">→ Hire me</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-label">Collaboration</div>
+  <h1 class="page-header-title"><span class="grad">Travaillons ensemble</span></h1>
+  <div class="page-header-line"></div>
+</div>
+
+<main>
+  <div class="contact-layout">
+    <div class="reveal-left">
+      <div class="avail-badge"><span class="dot"></span>Disponible immédiatement</div>
+      <p class="contact-text">Étudiant en <strong>Master 2 IA & Big Data</strong>, je suis ouvert aux opportunités de stage, d'alternance ou de collaboration sur des projets data ambitieux, en France ou à l'international.</p>
+      <p class="contact-text">Que vous ayez besoin d'expertise en <strong>Big Data, pipelines ETL, machine learning ou visualisation de données</strong> — je suis prêt à apporter de la valeur concrète à votre équipe.</p>
+      <ul class="opportunity-list">
+        <li><strong>Stage</strong> Data Engineer / Data Scientist</li>
+        <li><strong>Alternance</strong> Big Data / IA</li>
+        <li><strong>Collaboration</strong> sur projets data</li>
+        <li><strong>Freelance</strong> pipeline & visualisation</li>
+      </ul>
+      <div class="contact-quote">
+        <p>« La donnée brute n'est pas l'or — c'est la mine. Mon travail, c'est d'en extraire la valeur. »</p>
+        <cite>— Geutui Saint Loïc</cite>
+      </div>
+    </div>
+
+    <div class="contact-links reveal-right">
+      <a href="mailto:geutuiloic@gmail.com" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        <div><div class="contact-link-label">Email professionnel</div><div class="contact-link-val">geutuiloic@gmail.com</div></div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+      <a href="https://github.com/STL-dataCorp" target="_blank" class="contact-link">
+        <div class="contact-link-icon">🐙</div>
+        <div><div class="contact-link-label">GitHub — Code & projets</div><div class="contact-link-val">STL-dataCorp</div></div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+      <a href="https://www.linkedin.com/in/lo%C3%AFc-geutui-172970299" target="_blank" class="contact-link">
+        <div class="contact-link-icon">💼</div>
+        <div><div class="contact-link-label">LinkedIn — Réseau professionnel</div><div class="contact-link-val">Loïc Geutui</div></div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+
+      <!-- CTA block -->
+      <div style="background:linear-gradient(135deg,rgba(0,212,255,0.07),rgba(123,47,255,0.07));border:1px solid rgba(0,212,255,0.2);padding:2rem;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));margin-top:.5rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;">Réponse rapide garantie</div>
+        <div style="font-size:.9rem;color:var(--text);line-height:1.7;margin-bottom:1.5rem;">Je réponds à tous les messages sous <strong style="color:var(--accent)">48h maximum</strong>. N'hésitez pas à me contacter directement par email pour une réponse plus rapide.</div>
+        <a href="mailto:geutuiloic@gmail.com" class="btn-primary" style="width:100%;justify-content:center;">✉ Envoyer un email maintenant</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a><a href="about.html">À propos</a><a href="skills.html">Compétences</a>
+    <a href="projects.html">Projets</a><a href="parcours.html">Parcours</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">Built with precision & passion — 2025 —</div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

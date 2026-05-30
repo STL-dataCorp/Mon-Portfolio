@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — GEUTUI SAINT LOIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.about-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:start; margin-bottom:5rem; }
+.about-cards { display:flex; flex-direction:column; gap:1rem; }
+.about-card { background:var(--card); border:1px solid var(--border); padding:1.5rem 2rem; display:flex; align-items:center; gap:1.5rem; clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%); transition:all .4s; }
+.about-card:hover { border-color:rgba(0,212,255,.4); transform:translateX(8px); }
+.about-card-icon { width:44px; height:44px; background:rgba(0,212,255,.07); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.2rem; border-radius:4px; }
+.about-card-label { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:.12em; }
+.about-card-value { font-size:.92rem; font-weight:700; margin-top:.2rem; }
+.about-text-block p { font-size:.97rem; color:var(--muted); line-height:1.9; margin-bottom:1.4rem; }
+.about-text-block p strong { color:var(--accent); font-weight:600; }
+.about-text-block p:last-child { margin-bottom:0; }
+
+.about-values { margin-top:4rem; }
+.values-title { font-family:'Space Mono',monospace; font-size:.7rem; color:var(--accent); letter-spacing:.2em; text-transform:uppercase; margin-bottom:2rem; display:flex; align-items:center; gap:1rem; }
+.values-title::before { content:''; width:24px; height:1px; background:var(--accent); }
+.values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.value-card { background:var(--card); border:1px solid var(--border); padding:2rem; clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%); transition:all .35s; position:relative; overflow:hidden; }
+.value-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),transparent); opacity:0; transition:opacity .3s; }
+.value-card:hover { border-color:rgba(0,212,255,.35); transform:translateY(-5px); }
+.value-card:hover::after { opacity:1; }
+.value-icon { font-size:2rem; margin-bottom:1.2rem; }
+.value-name { font-size:.95rem; font-weight:800; margin-bottom:.6rem; }
+.value-desc { font-size:.82rem; color:var(--muted); line-height:1.7; }
+
+@media(max-width:1024px) { .about-grid{grid-template-columns:1fr;gap:2.5rem;} .values-grid{grid-template-columns:1fr 1fr;} }
+@media(max-width:600px) { .values-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="grid-overlay"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">GSL<span style="color:var(--muted)"> // </span>Portfolio</a>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="about.html" class="active">À propos</a>
+    <a href="skills.html">Compétences</a>
+    <a href="projects.html">Projets</a>
+    <a href="parcours.html">Parcours</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="mailto:geutuiloic@gmail.com" class="nav-cta">→ Hire me</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-label">Profil</div>
+  <h1 class="page-header-title"><span class="grad">À propos</span></h1>
+  <div class="page-header-line"></div>
+</div>
+
+<main>
+  <div class="about-grid">
+    <div class="about-cards">
+      <div class="about-card reveal">
+        <div class="about-card-icon">🎓</div>
+        <div><div class="about-card-label">Formation</div><div class="about-card-value">Master 2 — IA & Big Data</div></div>
+      </div>
+      <div class="about-card reveal">
+        <div class="about-card-icon">📍</div>
+        <div><div class="about-card-label">Localisation</div><div class="about-card-value">Cameroun — Mobilité internationale</div></div>
+      </div>
+      <div class="about-card reveal">
+        <div class="about-card-icon">⚡</div>
+        <div><div class="about-card-label">Statut</div><div class="about-card-value" style="color:var(--accent3)">Disponible — Stage / Alternance</div></div>
+      </div>
+      <div class="about-card reveal">
+        <div class="about-card-icon">🏆</div>
+        <div><div class="about-card-label">Certification</div><div class="about-card-value">Odoo Functional — Officielle</div></div>
+      </div>
+      <div class="about-card reveal">
+        <div class="about-card-icon">💡</div>
+        <div><div class="about-card-label">Passion</div><div class="about-card-value">Data → Valeur stratégique</div></div>
+      </div>
+    </div>
+    <div class="about-text-block reveal-right">
+      <p>Passionné par l'ingénierie des données et l'intelligence artificielle, je suis actuellement en <strong>Master 2 IA & Big Data</strong>, où je développe une expertise solide dans la conception de systèmes de traitement massif de données.</p>
+      <p>Mon cœur de métier : transformer des <strong>données volumineuses et hétérogènes</strong> en pipelines fiables et en indicateurs stratégiques. Je travaille quotidiennement avec <strong>Apache Spark, PySpark, Python et MongoDB</strong> pour construire des architectures data performantes.</p>
+      <p>Au-delà de la technique, j'ai une vision métier de la donnée. Ma certification <strong>Odoo Functional</strong> me permet de créer des ponts entre les systèmes ERP et les écosystèmes data modernes — une compétence rare et très précieuse en entreprise.</p>
+      <p>Je suis ouvert aux opportunités de <strong>stage, alternance ou collaboration</strong> sur des projets data ambitieux, en France ou à l'international.</p>
+      <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="projects.html" class="btn-primary">→ Mes projets</a>
+        <a href="contact.html" class="btn-secondary">✉ Me contacter</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-values">
+    <div class="values-title">Ce qui me définit</div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">🔬</div>
+        <div class="value-name">Rigueur analytique</div>
+        <div class="value-desc">Je traite chaque dataset avec méthode. Chaque pipeline est conçu pour être robuste, documenté et maintenable.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">🚀</div>
+        <div class="value-name">Orienté impact</div>
+        <div class="value-desc">Je ne produis pas de données — je produis de la valeur. Chaque projet se conclut par des KPIs actionnables.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">🔗</div>
+        <div class="value-name">Vision 360°</div>
+        <div class="value-desc">Ma double compétence data + ERP me permet de comprendre l'ensemble de la chaîne de valeur métier.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a><a href="about.html">À propos</a><a href="skills.html">Compétences</a>
+    <a href="projects.html">Projets</a><a href="parcours.html">Parcours</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">Built with precision & passion — 2025 —</div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

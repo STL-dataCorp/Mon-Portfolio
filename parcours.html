@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parcours — GEUTUI SAINT LOIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.parcours-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; }
+.timeline-section-title { font-family:'Space Mono',monospace; font-size:.68rem; color:var(--accent); letter-spacing:.25em; text-transform:uppercase; margin-bottom:2.5rem; display:flex; align-items:center; gap:1rem; }
+.timeline-section-title::before { content:''; width:24px; height:1px; background:var(--accent); }
+.timeline { position:relative; padding-left:2.5rem; }
+.timeline::before { content:''; position:absolute; left:.6rem; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,var(--accent),var(--accent2),transparent); opacity:.4; }
+.timeline-item { position:relative; margin-bottom:2.5rem; }
+.timeline-item::before { content:''; position:absolute; left:-2.05rem; top:1.6rem; width:10px; height:10px; background:var(--accent); border-radius:50%; border:2px solid var(--bg); box-shadow:0 0 12px var(--accent); transition:transform .3s; }
+.timeline-item:hover::before { transform:scale(1.4); }
+.timeline-card { background:var(--card); border:1px solid var(--border); padding:1.8rem 2rem; clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%); transition:all .35s; position:relative; }
+.timeline-card:hover { border-color:rgba(0,255,157,.35); transform:translateX(6px); }
+.cert-icon { width:52px; height:52px; background:rgba(0,255,157,.06); border:1px solid rgba(0,255,157,.2); display:flex; align-items:center; justify-content:center; font-size:1.4rem; border-radius:4px; float:left; margin-right:1.2rem; flex-shrink:0; }
+.cert-year { font-family:'Space Mono',monospace; font-size:.6rem; color:rgba(0,212,255,.4); float:right; letter-spacing:.08em; margin-top:.15rem; }
+.cert-name { font-size:.95rem; font-weight:700; margin-bottom:.3rem; clear:none; }
+.cert-issuer { font-family:'Space Mono',monospace; font-size:.62rem; color:var(--accent3); text-transform:uppercase; letter-spacing:.1em; margin-bottom:.6rem; }
+.cert-desc { font-size:.82rem; color:var(--muted); line-height:1.65; clear:both; margin-top:.3rem; }
+.cert-header { overflow:hidden; margin-bottom:.6rem; }
+
+/* Experience / Soft skills panel */
+.soft-skills { margin-top:2rem; }
+.ss-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.ss-item { background:var(--card); border:1px solid var(--border); padding:1.2rem 1.5rem; clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%); transition:all .3s; }
+.ss-item:hover { border-color:rgba(0,212,255,.35); transform:translateY(-3px); }
+.ss-icon { font-size:1.4rem; margin-bottom:.6rem; }
+.ss-name { font-size:.85rem; font-weight:700; margin-bottom:.3rem; }
+.ss-desc { font-size:.75rem; color:var(--muted); line-height:1.5; }
+
+.cert-badge { display:inline-flex; align-items:center; gap:.4rem; font-family:'Space Mono',monospace; font-size:.58rem; color:var(--accent3); border:1px solid rgba(0,255,157,.25); padding:.25rem .6rem; border-radius:2px; margin-top:.8rem; background:rgba(0,255,157,.04); }
+.cert-badge .dot-sm { width:5px; height:5px; background:var(--accent3); border-radius:50%; box-shadow:0 0 6px var(--accent3); }
+
+@media(max-width:1024px) { .parcours-layout{grid-template-columns:1fr;gap:3rem;} .ss-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="grid-overlay"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">GSL<span style="color:var(--muted)"> // </span>Portfolio</a>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="skills.html">Compétences</a>
+    <a href="projects.html">Projets</a>
+    <a href="parcours.html" class="active">Parcours</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="mailto:geutuiloic@gmail.com" class="nav-cta">→ Hire me</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-label">Formation & Certifications</div>
+  <h1 class="page-header-title"><span class="grad">Parcours & Diplômes</span></h1>
+  <div class="page-header-line"></div>
+</div>
+
+<main>
+  <div class="parcours-layout">
+    <div>
+      <div class="timeline-section-title">Formation académique</div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">🎓</div>
+              <div class="cert-year">2025</div>
+              <div class="cert-name">Master 2 — IA & Big Data</div>
+              <div class="cert-issuer">En cours — 2025 / 2026</div>
+            </div>
+            <div class="cert-desc">Spécialisation en intelligence artificielle, traitement massif de données, machine learning et architectures distribuées. Développement de projets appliqués sur des datasets réels avec Apache Spark et Python.</div>
+            <div class="cert-badge"><span class="dot-sm"></span>En cours</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">📘</div>
+              <div class="cert-year">2025</div>
+              <div class="cert-name">Master 1 — Informatique</div>
+              <div class="cert-issuer">Mention Bien</div>
+            </div>
+            <div class="cert-desc">Fondements en algorithmique avancée, bases de données relationnelles, génie logiciel et premières expériences en analyse de données.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">🎒</div>
+              <div class="cert-year">2023</div>
+              <div class="cert-name">Licence — Informatique</div>
+              <div class="cert-issuer">Spécialité Systèmes d'information</div>
+            </div>
+            <div class="cert-desc">Apprentissage des langages de programmation, réseaux, systèmes d'exploitation et introduction aux bases de données relationnelles.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="timeline-section-title">Certifications & Pratique</div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">✅</div>
+              <div class="cert-year">2024</div>
+              <div class="cert-name">Odoo Functional Certification</div>
+              <div class="cert-issuer">Odoo S.A. — Certification officielle</div>
+            </div>
+            <div class="cert-desc">Maîtrise des modules fonctionnels Odoo : CRM, ventes, comptabilité, gestion des stocks et reporting ERP. Certification reconnue internationalement par Odoo S.A.</div>
+            <div class="cert-badge"><span class="dot-sm"></span>Certifié officiel</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">🔬</div>
+              <div class="cert-year">2024</div>
+              <div class="cert-name">Big Data Engineering</div>
+              <div class="cert-issuer">Projets académiques & pratique</div>
+            </div>
+            <div class="cert-desc">Expertise appliquée sur Apache Spark, pipelines ETL multi-sources, stockage NoSQL avec MongoDB et visualisation avancée de KPIs métier avec Power BI et Matplotlib.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">🐍</div>
+              <div class="cert-year">2023</div>
+              <div class="cert-name">Python for Data Science</div>
+              <div class="cert-issuer">Autoformation intensive</div>
+            </div>
+            <div class="cert-desc">Maîtrise de l'écosystème Python data science : NumPy, Pandas, Matplotlib, Scikit-learn — appliqué à des datasets réels.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="soft-skills">
+        <div class="timeline-section-title">Soft skills</div>
+        <div class="ss-grid">
+          <div class="ss-item reveal"><div class="ss-icon">🧠</div><div class="ss-name">Analytique</div><div class="ss-desc">Résolution de problèmes complexes avec méthode et rigueur</div></div>
+          <div class="ss-item reveal"><div class="ss-icon">🤝</div><div class="ss-name">Collaboration</div><div class="ss-desc">Travail d'équipe et communication technique claire</div></div>
+          <div class="ss-item reveal"><div class="ss-icon">📚</div><div class="ss-name">Curiosité</div><div class="ss-desc">Veille technologique permanente et apprentissage continu</div></div>
+          <div class="ss-item reveal"><div class="ss-icon">⚡</div><div class="ss-name">Adaptabilité</div><div class="ss-desc">Flexibilité face aux nouvelles technologies et contextes</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a><a href="about.html">À propos</a><a href="skills.html">Compétences</a>
+    <a href="projects.html">Projets</a><a href="parcours.html">Parcours</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">Built with precision & passion — 2025 —</div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

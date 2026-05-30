@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compétences — GEUTUI SAINT LOIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.skills-intro { font-size:.97rem; color:var(--muted); line-height:1.9; max-width:640px; margin-bottom:3.5rem; }
+.skills-grid-top { display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin-bottom:4rem; }
+.skill-bars-panel { display:flex; flex-direction:column; gap:2rem; }
+.skill-item-row { display:flex; flex-direction:column; gap:.55rem; }
+.skill-item-header { display:flex; justify-content:space-between; align-items:center; }
+.skill-item-name { font-size:.88rem; font-weight:600; }
+.skill-item-pct { font-family:'Space Mono',monospace; font-size:.72rem; color:var(--accent); }
+.skill-item-bar { height:4px; background:rgba(255,255,255,.06); border-radius:2px; overflow:hidden; }
+.skill-item-fill { height:100%; border-radius:2px; width:0%; transition:width 1.4s .3s cubic-bezier(.4,0,.2,1); }
+
+.skill-cats-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+.skill-cat-card { background:var(--card); border:1px solid var(--border); padding:1.8rem; clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px)); transition:all .35s; position:relative; overflow:hidden; }
+.skill-cat-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--accent); opacity:0; transition:opacity .3s; }
+.skill-cat-card:hover { border-color:rgba(0,212,255,.4); transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,0,0,.3); }
+.skill-cat-card:hover::before { opacity:1; }
+.skill-cat-icon { font-size:1.8rem; margin-bottom:1rem; }
+.skill-cat-label { font-family:'Space Mono',monospace; font-size:.62rem; color:var(--accent); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem; }
+.skill-cat-name { font-size:1rem; font-weight:700; margin-bottom:.3rem; }
+.skill-cat-sub { font-size:.78rem; color:var(--muted); margin-bottom:1.2rem; }
+.skill-cat-bar-bg { height:3px; background:rgba(255,255,255,.06); border-radius:2px; overflow:hidden; margin-bottom:1rem; }
+.skill-cat-bar-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; width:0%; transition:width 1.2s .2s cubic-bezier(.4,0,.2,1); }
+.skill-tags-row { display:flex; flex-wrap:wrap; gap:.4rem; }
+
+.divider-label { font-family:'Space Mono',monospace; font-size:.68rem; color:var(--accent); letter-spacing:.25em; text-transform:uppercase; margin:3rem 0 2rem; display:flex; align-items:center; gap:1rem; }
+.divider-label::before { content:''; width:24px; height:1px; background:var(--accent); }
+.divider-label::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(0,212,255,.3),transparent); }
+
+@media(max-width:1024px) { .skills-grid-top{grid-template-columns:1fr;gap:2rem;} }
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="grid-overlay"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">GSL<span style="color:var(--muted)"> // </span>Portfolio</a>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="skills.html" class="active">Compétences</a>
+    <a href="projects.html">Projets</a>
+    <a href="parcours.html">Parcours</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="mailto:geutuiloic@gmail.com" class="nav-cta">→ Hire me</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-label">Stack technique</div>
+  <h1 class="page-header-title"><span class="grad">Compétences & Technologies</span></h1>
+  <div class="page-header-line"></div>
+</div>
+
+<main>
+  <p class="skills-intro reveal">Spécialisé en ingénierie des données et intelligence artificielle, je maîtrise un écosystème technologique complet — du traitement Big Data avec Apache Spark à la visualisation BI, en passant par le déploiement DevOps et les architectures ERP.</p>
+
+  <div class="skills-grid-top">
+    <div class="skill-bars-panel">
+      <div class="divider-label">Niveaux de maîtrise</div>
+      <div class="skill-item-row reveal">
+        <div class="skill-item-header"><span class="skill-item-name">Apache Spark / PySpark</span><span class="skill-item-pct">90%</span></div>
+        <div class="skill-item-bar"><div class="skill-item-fill" data-width="90%" style="background:linear-gradient(90deg,#00d4ff,#00bfe8)"></div></div>
+      </div>
+      <div class="skill-item-row reveal">
+        <div class="skill-item-header"><span class="skill-item-name">Python</span><span class="skill-item-pct">88%</span></div>
+        <div class="skill-item-bar"><div class="skill-item-fill" data-width="88%" style="background:linear-gradient(90deg,#7b2fff,#9b5fff)"></div></div>
+      </div>
+      <div class="skill-item-row reveal">
+        <div class="skill-item-header"><span class="skill-item-name">SQL / MongoDB</span><span class="skill-item-pct">85%</span></div>
+        <div class="skill-item-bar"><div class="skill-item-fill" data-width="85%" style="background:linear-gradient(90deg,#00ff9d,#00d480)"></div></div>
+      </div>
+      <div class="skill-item-row reveal">
+        <div class="skill-item-header"><span class="skill-item-name">Power BI / Tableau</span><span class="skill-item-pct">82%</span></div>
+        <div class="skill-item-bar"><div class="skill-item-fill" data-width="82%" style="background:linear-gradient(90deg,#ff6b35,#ff8c5e)"></div></div>
+      </div>
+      <div class="skill-item-row reveal">
+        <div class="skill-item-header"><span class="skill-item-name">TensorFlow / PyTorch</span><span class="skill-item-pct">78%</span></div>
+        <div class="skill-item-bar"><div class="skill-item-fill" data-width="78%" style="background:linear-gradient(90deg,#7b2fff,#00d4ff)"></div></div>
+      </div>
+      <div class="skill-item-row reveal">
+        <div class="skill-item-header"><span class="skill-item-name">Docker / Kubernetes</span><span class="skill-item-pct">70%</span></div>
+        <div class="skill-item-bar"><div class="skill-item-fill" data-width="70%" style="background:linear-gradient(90deg,#00d4ff,#7b2fff)"></div></div>
+      </div>
+      <div class="skill-item-row reveal">
+        <div class="skill-item-header"><span class="skill-item-name">Odoo ERP</span><span class="skill-item-pct">80%</span></div>
+        <div class="skill-item-bar"><div class="skill-item-fill" data-width="80%" style="background:linear-gradient(90deg,#00ff9d,#7b2fff)"></div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="divider-label">Écosystème data</div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:2rem;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));" class="reveal-right">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;">Big Data</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+              <span class="tag">Apache Spark</span><span class="tag">PySpark</span><span class="tag">Hadoop</span><span class="tag">ETL</span><span class="tag">Data Lake</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--accent2);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;">IA / ML</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+              <span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">Scikit-learn</span><span class="tag">Deep Learning</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--accent3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;">Bases de données</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+              <span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">NoSQL</span><span class="tag">CSV/JSON</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--accent4);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;">DevOps</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+              <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Git</span><span class="tag">GitHub</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;">Visualisation</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+              <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Looker</span><span class="tag">Matplotlib</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--accent2);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.8rem;">ERP</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+              <span class="tag">Odoo</span><span class="tag">Fonctionnel</span><span class="tag">Reporting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-label">Domaines d'expertise</div>
+  <div class="skill-cats-grid">
+    <div class="skill-cat-card reveal"><div class="skill-cat-icon">⚙️</div><div class="skill-cat-label">Data Engineering</div><div class="skill-cat-name">Traitement & Pipelines</div><div class="skill-cat-sub">Construction de pipelines ETL robustes et scalables</div><div class="skill-cat-bar-bg"><div class="skill-cat-bar-fill" data-width="88%"></div></div><div class="skill-tags-row"><span class="tag">Apache Spark</span><span class="tag">PySpark</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">ETL</span></div></div>
+    <div class="skill-cat-card reveal"><div class="skill-cat-icon">🤖</div><div class="skill-cat-label">Machine Learning</div><div class="skill-cat-name">IA & Modélisation</div><div class="skill-cat-sub">Développement et entraînement de modèles IA</div><div class="skill-cat-bar-bg"><div class="skill-cat-bar-fill" data-width="78%"></div></div><div class="skill-tags-row"><span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">Scikit-learn</span><span class="tag">Deep Learning</span></div></div>
+    <div class="skill-cat-card reveal"><div class="skill-cat-icon">📊</div><div class="skill-cat-label">Visualisation</div><div class="skill-cat-name">BI & Dashboards</div><div class="skill-cat-sub">Création de tableaux de bord KPIs interactifs</div><div class="skill-cat-bar-bg"><div class="skill-cat-bar-fill" data-width="82%"></div></div><div class="skill-tags-row"><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Looker</span><span class="tag">Matplotlib</span></div></div>
+    <div class="skill-cat-card reveal"><div class="skill-cat-icon">🗄️</div><div class="skill-cat-label">Stockage & BDD</div><div class="skill-cat-name">Bases de données</div><div class="skill-cat-sub">Architecture NoSQL et relationnelle</div><div class="skill-cat-bar-bg"><div class="skill-cat-bar-fill" data-width="85%"></div></div><div class="skill-tags-row"><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">Data Lake</span><span class="tag">NoSQL</span></div></div>
+    <div class="skill-cat-card reveal"><div class="skill-cat-icon">🐳</div><div class="skill-cat-label">DevOps & Cloud</div><div class="skill-cat-name">Infrastructure</div><div class="skill-cat-sub">Containerisation et déploiement d'applications</div><div class="skill-cat-bar-bg"><div class="skill-cat-bar-fill" data-width="70%"></div></div><div class="skill-tags-row"><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Git / GitHub</span></div></div>
+    <div class="skill-cat-card reveal"><div class="skill-cat-icon">🔗</div><div class="skill-cat-label">ERP & Gestion</div><div class="skill-cat-name">Systèmes métier</div><div class="skill-cat-sub">Intégration ERP et gestion d'entreprise</div><div class="skill-cat-bar-bg"><div class="skill-cat-bar-fill" data-width="80%"></div></div><div class="skill-tags-row"><span class="tag">Odoo</span><span class="tag">ERP Fonctionnel</span><span class="tag">Reporting</span></div></div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a><a href="about.html">À propos</a><a href="skills.html">Compétences</a>
+    <a href="projects.html">Projets</a><a href="parcours.html">Parcours</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">Built with precision & passion — 2025 —</div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>
