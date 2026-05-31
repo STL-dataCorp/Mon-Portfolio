@@ -25,8 +25,8 @@
 .cert-header { overflow:hidden; margin-bottom:.6rem; }
 
 /* Experience / Soft skills panel */
-.soft-skills { margin-top:2rem; }
-.ss-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.soft-skills { margin-top: 5rem; } /* Augmentation de la marge pour bien séparer des timelines */
+.ss-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:1rem; } /* Passage sur 4 colonnes pour une belle ligne centrée */
 .ss-item { background:var(--card); border:1px solid var(--border); padding:1.2rem 1.5rem; clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%); transition:all .3s; }
 .ss-item:hover { border-color:rgba(0,212,255,.35); transform:translateY(-3px); }
 .ss-icon { font-size:1.4rem; margin-bottom:.6rem; }
@@ -36,7 +36,13 @@
 .cert-badge { display:inline-flex; align-items:center; gap:.4rem; font-family:'Space Mono',monospace; font-size:.58rem; color:var(--accent3); border:1px solid rgba(0,255,157,.25); padding:.25rem .6rem; border-radius:2px; margin-top:.8rem; background:rgba(0,255,157,.04); }
 .cert-badge .dot-sm { width:5px; height:5px; background:var(--accent3); border-radius:50%; box-shadow:0 0 6px var(--accent3); }
 
-@media(max-width:1024px) { .parcours-layout{grid-template-columns:1fr;gap:3rem;} .ss-grid{grid-template-columns:1fr;} }
+@media(max-width:1024px) { 
+  .parcours-layout{grid-template-columns:1fr;gap:3rem;} 
+  .ss-grid{grid-template-columns:1fr 1fr;} /* 2 colonnes sur tablette */
+}
+@media(max-width:640px) {
+  .ss-grid{grid-template-columns:1fr;} /* 1 colonne sur mobile */
+}
 </style>
 </head>
 <body>
@@ -66,7 +72,9 @@
 </div>
 
 <main>
+  <!-- Grille des Timelines (Formations vs Certifications) -->
   <div class="parcours-layout">
+    <!-- COLONNE GAUCHE : FORMATION ACADÉMIQUE -->
     <div>
       <div class="timeline-section-title">Formation académique</div>
       <div class="timeline">
@@ -107,14 +115,58 @@
       </div>
     </div>
 
+    <!-- COLONNE DROITE : CERTIFICATIONS & PRATIQUE -->
     <div>
       <div class="timeline-section-title">Certifications & Pratique</div>
       <div class="timeline">
+        <!-- NOUVELLE CERTIFICATION : IA Générative -->
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">🤖</div>
+              <div class="cert-year">04/2026</div>
+              <div class="cert-name">IA Générative</div>
+              <div class="cert-issuer">Microsoft Learn / MTN Skills Academy</div>
+            </div>
+            <div class="cert-desc">Compréhension approfondie des grands modèles de langage (LLM), de la création de prompts efficaces et des applications concrètes de l'IA générative dans l'écosystème technologique moderne.</div>
+            <div class="cert-badge"><span class="dot-sm"></span>ID: SKA0546634043020261342</div>
+          </div>
+        </div>
+
+        <!-- NOUVELLE CERTIFICATION : IA Responsable -->
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">⚖️</div>
+              <div class="cert-year">04/2026</div>
+              <div class="cert-name">IA Responsable</div>
+              <div class="cert-issuer">Microsoft Learn / MTN Skills Academy</div>
+            </div>
+            <div class="cert-desc">Étude des principes éthiques de l'intelligence artificielle : équité, fiabilité, sécurité, confidentialité, inclusion, transparence et responsabilité dans le déploiement des modèles.</div>
+            <div class="cert-badge"><span class="dot-sm"></span>ID: SKA7463969042720261002</div>
+          </div>
+        </div>
+
+        <!-- NOUVELLES CERTIFICATIONS : Les bases de l'IA & L'IA pour tous -->
+        <div class="timeline-item reveal">
+          <div class="timeline-card">
+            <div class="cert-header">
+              <div class="cert-icon">✨</div>
+              <div class="cert-year">04/2026</div>
+              <div class="cert-name">Les Bases de l'IA & L'IA pour tous</div>
+              <div class="cert-issuer">Microsoft Learn / MTN Skills Academy</div>
+            </div>
+            <div class="cert-desc">Acquisition des concepts fondamentaux du Machine Learning, du Deep Learning et de la vision par ordinateur, ainsi que de leur impact managérial et sociétal.</div>
+            <div class="cert-badge"><span class="dot-sm"></span>Certifié Réussite</div>
+          </div>
+        </div>
+
+        <!-- Odoo -->
         <div class="timeline-item reveal">
           <div class="timeline-card">
             <div class="cert-header">
               <div class="cert-icon">✅</div>
-              <div class="cert-year">2024</div>
+              <div class="cert-year">2026</div>
               <div class="cert-name">Odoo Functional Certification</div>
               <div class="cert-issuer">Odoo S.A. — Certification officielle</div>
             </div>
@@ -122,6 +174,8 @@
             <div class="cert-badge"><span class="dot-sm"></span>Certifié officiel</div>
           </div>
         </div>
+
+        <!-- Big Data -->
         <div class="timeline-item reveal">
           <div class="timeline-card">
             <div class="cert-header">
@@ -133,6 +187,8 @@
             <div class="cert-desc">Expertise appliquée sur Apache Spark, pipelines ETL multi-sources, stockage NoSQL avec MongoDB et visualisation avancée de KPIs métier avec Power BI et Matplotlib.</div>
           </div>
         </div>
+
+        <!-- Python -->
         <div class="timeline-item reveal">
           <div class="timeline-card">
             <div class="cert-header">
@@ -145,16 +201,17 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="soft-skills">
-        <div class="timeline-section-title">Soft skills</div>
-        <div class="ss-grid">
-          <div class="ss-item reveal"><div class="ss-icon">🧠</div><div class="ss-name">Analytique</div><div class="ss-desc">Résolution de problèmes complexes avec méthode et rigueur</div></div>
-          <div class="ss-item reveal"><div class="ss-icon">🤝</div><div class="ss-name">Collaboration</div><div class="ss-desc">Travail d'équipe et communication technique claire</div></div>
-          <div class="ss-item reveal"><div class="ss-icon">📚</div><div class="ss-name">Curiosité</div><div class="ss-desc">Veille technologique permanente et apprentissage continu</div></div>
-          <div class="ss-item reveal"><div class="ss-icon">⚡</div><div class="ss-name">Adaptabilité</div><div class="ss-desc">Flexibilité face aux nouvelles technologies et contextes</div></div>
-        </div>
-      </div>
+  <!-- SECTION CENTRALISÉE ET EXTÉRIEURE : SOFT SKILLS -->
+  <div class="soft-skills">
+    <div class="timeline-section-title">Soft skills</div>
+    <div class="ss-grid">
+      <div class="ss-item reveal"><div class="ss-icon">🧠</div><div class="ss-name">Analytique</div><div class="ss-desc">Résolution de problèmes complexes avec méthode et rigueur</div></div>
+      <div class="ss-item reveal"><div class="ss-icon">🤝</div><div class="ss-name">Collaboration</div><div class="ss-desc">Travail d'équipe et communication technique claire</div></div>
+      <div class="ss-item reveal"><div class="ss-icon">📚</div><div class="ss-name">Curiosité</div><div class="ss-desc">Veille technologique permanente et apprentissage continu</div></div>
+      <div class="ss-item reveal"><div class="ss-icon">⚡</div><div class="ss-name">Adaptabilité</div><div class="ss-desc">Flexibilité face aux nouvelles technologies et contextes</div></div>
     </div>
   </div>
 </main>
@@ -164,7 +221,7 @@
     <a href="index.html">Accueil</a><a href="about.html">À propos</a><a href="skills.html">Compétences</a>
     <a href="projects.html">Projets</a><a href="parcours.html">Parcours</a><a href="contact.html">Contact</a>
   </div>
-  <div class="footer-copy">Built with precision & passion — 2025 —</div>
+  <div class="footer-copy">Built with precision & passion — 2026 —</div>
 </footer>
 <script src="shared.js"></script>
 </body>
