@@ -23,9 +23,34 @@ let W,H,particles=[];
 function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
 resize(); window.addEventListener('resize',resize);
 class Particle {
-  constructor(){ this.x=Math.random()*W; this.y=Math.random()*H; this.vx=(Math.random()-.5)*.3; this.vy=(Math.random()-.5)*.3; this.r=Math.random()*1.5+.3; this.alpha=Math.random()*.35+.08; this.color=Math.random()>.6?'0,212,255':Math.random()>.5?'123,47,255':'0,255,157'; }
-  update(){ this.x+=this.vx; this.y+=this.vy; if(this.x<0)this.x=W; if(this.x>W)this.x=0; if(this.y<0)this.y=H; if(this.y>H)this.y=0; }
-  draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fillStyle=`rgba(${this.color},${this.alpha})`; ctx.fill(); }
+  constructor(){ 
+    this.x = Math.random() * W; 
+    this.y = Math.random() * H; 
+    this.vx = (Math.random() - .5) * .3; 
+    this.vy = (Math.random() - .5) * .3; 
+    
+    // MODIFICATION : Les particules font maintenant entre 1.5 et 4.5 pixels
+    this.r = Math.random() * 3 + 1.5; 
+    
+    // AJUSTEMENT : Légèrement plus douces en opacité pour un effet de profondeur chic
+    this.alpha = Math.random() * .25 + .05; 
+    
+    this.color = Math.random() > .6 ? '0,212,255' : Math.random() > .5 ? '123,47,255' : '0,255,157'; 
+  }
+  update(){ 
+    this.x += this.vx; 
+    this.y += this.vy; 
+    if(this.x < 0) this.x = W; 
+    if(this.x > W) this.x = 0; 
+    if(this.y < 0) this.y = H; 
+    if(this.y > H) this.y = 0; 
+  }
+  draw(){ 
+    ctx.beginPath(); 
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); 
+    ctx.fillStyle = `rgba(${this.color},${this.alpha})`; 
+    ctx.fill(); 
+  }
 }
 for(let i=0;i<100;i++) particles.push(new Particle());
 function drawConnections(){ for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++){ const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, d=Math.sqrt(dx*dx+dy*dy); if(d<110){ ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle=`rgba(0,212,255,${.05*(1-d/110)})`; ctx.lineWidth=.5; ctx.stroke(); } } }
