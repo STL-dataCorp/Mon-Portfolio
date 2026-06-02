@@ -198,7 +198,7 @@ body { display:block; min-height:100vh; }
 <script src="shared.js"></script>
 <script>
 // TYPEWRITER ANIMATION
-const phrases=['Data Engineer','M2 IA & Big Data','Apache Spark Expert','Pipeline Builder','Big Data Enthusiast'];
+const phrases=['Data Scientist','Data Engineer','M2 IA & Big Data','Apache Spark Expert','Pipeline Builder','Big Data Enthusiast'];
 let pi=0,ci=0,deleting=false;
 const twEl=document.getElementById('typewriter-text');
 function typeLoop(){ const ph=phrases[pi]; if(!deleting){ twEl.textContent=ph.slice(0,ci+1); ci++; if(ci===ph.length){setTimeout(()=>{deleting=true;typeLoop();},2200);return;} setTimeout(typeLoop,80); } else { twEl.textContent=ph.slice(0,ci-1); ci--; if(ci===0){deleting=false;pi=(pi+1)%phrases.length;setTimeout(typeLoop,400);return;} setTimeout(typeLoop,45); } }
